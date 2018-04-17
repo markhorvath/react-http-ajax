@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+
+// this is from the axios.js file, the instance, it could've been called "import instance"
+// but then you'd have to change all the times 'axios' was used in the component below
+import axios from '../../axios';
 
 import Post from '../../components/Post/Post';
 import FullPost from '../../components/FullPost/FullPost';

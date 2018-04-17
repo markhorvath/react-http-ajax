@@ -7,7 +7,7 @@ import axios from 'axios';
 
 // Using Axios default urls to make code cleaner elsewhere, lecture 161
 axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
-// the below are just examples
+// the below are just examples, can be used to set default configs used application-wide
 axios.defaults.headers.common['Authorization'] = 'Auth Token';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
