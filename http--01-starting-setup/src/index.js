@@ -5,6 +5,12 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import axios from 'axios';
 
+// Using Axios default urls to make code cleaner elsewhere, lecture 161
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+// the below are just examples
+axios.defaults.headers.common['Authorization'] = 'Auth Token';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+
 // for Send aka requests
 axios.interceptors.request.use(request => {
     console.log(request);
