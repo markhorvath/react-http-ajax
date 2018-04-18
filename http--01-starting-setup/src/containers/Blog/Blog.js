@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 
 // this is from the axios.js file, the instance, it could've been called "import instance"
 // but then you'd have to change all the times 'axios' was used in the component below
-import axios from '../../axios';
+//import axios from '../../axios';
+import { Route } from 'react-router-dom';
 
 import './Blog.css';
 import Posts from '../Posts/Posts';
@@ -22,7 +23,7 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-                <Posts />
+                <Route path="/" render={() => <h1>home</h1>} />
             </div>
         );
     }
