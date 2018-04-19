@@ -1,4 +1,5 @@
 import React from 'react';
+//import { withRouter } from 'react-router-dom';
 
 import './Post.css';
 
@@ -10,5 +11,9 @@ const post = (props) => (
         </div>
     </article>
 );
+
+// withRouter adds router props (like match, history, location) to other components
+// in other words its a good way of making a component "route aware"
+//export default withRouter(post);
 
 export default post;
