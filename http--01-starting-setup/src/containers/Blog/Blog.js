@@ -45,9 +45,18 @@ class Blog extends Component {
                 the first match that is found, so if /:id was before /new-post
             it would apply that thinking /new-post was just a form of :id}*/}
                 <Switch>
+
+                    {/*this below is an example of a guard, with auth added to state as false*/}
                     {(this.state.auth) ? <Route path="/new-post" component={NewPost} /> : null}
+
                     <Route path="/posts/" component={Posts} />
-                    <Redirect from="/" to="/posts" />
+
+                    {/*the below is a way to handle 404 or unknown routes, notice there's no path
+                    also not that it will not work with Redirect if you redirect from '/', but it will
+                    work if you redirect to any other page than '/' because "from='/'" is treated as a prefix
+                    and catches all routes just as the line below catches all, therefore it creates a conflict*/}
+                    <Route render={() => <h1>Not Found</h1>} />
+                    {/*<Redirect from="/" to="/posts" />*/}
                     {/*<Route path="/" component={Posts} />*/}
                 </Switch>
             </div>
