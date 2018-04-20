@@ -8,12 +8,20 @@ import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 
 import './Blog.css';
 import Posts from '../Posts/Posts';
-import NewPost from '../NewPost/NewPost';
+//import NewPost from '../NewPost/NewPost';
+import asyncComponent from '../../hoc/asyncComponent';
+
+const AsyncNewPost = asyncComponent(() => {
+    //the import() function is a special/dynamic syntax which means that whatever comes
+    //between the paranthesis is only imported when it (the import() function) is executed,
+    //and this will only be executed here once we render AsyncNewPost to the screen
+    return import('../NewPost/NewPost');
+});
 
 
 class Blog extends Component {
     state = {
-        auth: false
+        auth: true
     }
 
     render () {
@@ -47,7 +55,11 @@ class Blog extends Component {
                 <Switch>
 
                     {/*this below is an example of a guard, with auth added to state as false*/}
-                    {(this.state.auth) ? <Route path="/new-post" component={NewPost} /> : null}
+                    {/*{(this.state.auth) ? <Route path="/new-post" component={NewPost} /> : null}*/}
+
+                    {/*the line below was used to teach about lazy-loading, the component prop was changed to
+                    asyncComponent which is a hoc that imports and calls the NewPost component*/}
+                    {this.state.auth ? <Route path="/new-post" component={AsyncNewPost} /> : null}
 
                     <Route path="/posts/" component={Posts} />
 
