@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // this is from the axios.js file, the instance, it could've been called "import instance"
 // but then you'd have to change all the times 'axios' was used in the component below
 //import axios from '../../axios';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 import './Blog.css';
 import Posts from '../Posts/Posts';
@@ -39,9 +39,14 @@ class Blog extends Component {
                     </nav>
                 </header>
                 {/*<Route path="/" render={() => <h1>home</h1>} />*/}
-                <Route path="/" exact component={Posts} />
-                <Route path="/new-post" component={NewPost} />
-                <Route path="/:id" exact component={FullPost} />
+                {/* Switch goes through each route one by one and applies
+                the first match that is found, so if /:id was before /new-post
+            it would apply that thinking /new-post was just a form of :id}*/}
+                <Switch>
+                    <Route path="/" exact component={Posts} />
+                    <Route path="/new-post" component={NewPost} />
+                    <Route path="/:id" exact component={FullPost} />
+                </Switch>
             </div>
         );
     }
