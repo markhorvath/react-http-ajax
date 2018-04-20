@@ -25,12 +25,23 @@ class NewPost extends Component {
         axios.post('/posts/', data)
             .then(response => {
                 console.log(response);
-                this.setState({submitted: true});
+                //this.props.history.push('/posts/'); this "pushes" the page onto the stack ie
+                //i guess its a array of these pages, so if you hit back after submitted a new
+                //post it will go back to the new post form
+
+                //using replace here acts like redirect, so if you start at home/Posts, then
+                //click New Post, then submit something, it will return you to home/Posts,
+                //but if you hit back it will go back to the first home/Posts you started at
+                //because the New Post you were on is "replaced" by Posts ('/posts/')
+                this.props.history.replace('/posts/');
+                //this.setState({submitted: true});
             });
     }
 
     render () {
-        // Conditional Redirects
+        // Conditional Redirects, added submitted boolean to state then put in logic below
+        // to test for truthiness of submitted which will then render the redirect variable
+        // if true
         let redirect = null;
         if (this.state.submitted === true) {
             redirect = <Redirect to="/posts" />;
