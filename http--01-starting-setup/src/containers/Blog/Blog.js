@@ -9,7 +9,7 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import './Blog.css';
 import Posts from '../Posts/Posts';
 import NewPost from '../NewPost/NewPost';
-import FullPost from '../FullPost/FullPost';
+
 
 class Blog extends Component {
     render () {
@@ -24,7 +24,7 @@ class Blog extends Component {
                 {/* activeClassName="active" is just there to show you can change the name to whatever you want,
                 here it's redundant because the default class name is already 'active' */}
                             <li><NavLink
-                                to="/"
+                                to="/posts/"
                                 exact
                                 activeClassName="my-active"
                                 activeStyle={{color: '#42f44b', textDecoration: 'underline'}}>Home</NavLink></li>
@@ -43,9 +43,8 @@ class Blog extends Component {
                 the first match that is found, so if /:id was before /new-post
             it would apply that thinking /new-post was just a form of :id}*/}
                 <Switch>
-                    <Route path="/" exact component={Posts} />
                     <Route path="/new-post" component={NewPost} />
-                    <Route path="/:id" exact component={FullPost} />
+                    <Route path="/posts/" component={Posts} />
                 </Switch>
             </div>
         );
