@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // this is from the axios.js file, the instance, it could've been called "import instance"
 // but then you'd have to change all the times 'axios' was used in the component below
 //import axios from '../../axios';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 
 import './Blog.css';
 import Posts from '../Posts/Posts';
@@ -45,6 +45,8 @@ class Blog extends Component {
                 <Switch>
                     <Route path="/new-post" component={NewPost} />
                     <Route path="/posts/" component={Posts} />
+                    <Redirect from="/" to="/posts" />
+                    {/*<Route path="/" component={Posts} />*/}
                 </Switch>
             </div>
         );

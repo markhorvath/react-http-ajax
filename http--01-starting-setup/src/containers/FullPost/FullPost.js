@@ -9,9 +9,15 @@ class FullPost extends Component {
     }
 
     componentDidMount () {
+        console.log("componendDidMount FullPost.js", this.props);
         this.loadData();
     }
 
+    // need to handle changes in componentDidUpdate if the component in general
+    // is already loaded through routing because the router will not unmount the old one and
+    // mount the same one again with different data but instead will reuse the old one and just
+    // adjust the route parameter, its our job to react to this new parameter which is done in
+    // componentDidUpdate which will be called because props changed
     componentDidUpdate () {
         this.loadData();
     }
