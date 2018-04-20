@@ -13,6 +13,8 @@ class NewPost extends Component {
     }
 
     componentDidMount() {
+        // logic to check if user is authorized to proceed,
+        // if unauth => this.props.history.replace("/posts"); another example of a guard
         console.log(this.props);
     }
 

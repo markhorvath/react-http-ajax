@@ -12,9 +12,11 @@ import NewPost from '../NewPost/NewPost';
 
 
 class Blog extends Component {
+    state = {
+        auth: false
+    }
+
     render () {
-
-
         return (
             <div className="Blog">
                 <header>
@@ -43,7 +45,7 @@ class Blog extends Component {
                 the first match that is found, so if /:id was before /new-post
             it would apply that thinking /new-post was just a form of :id}*/}
                 <Switch>
-                    <Route path="/new-post" component={NewPost} />
+                    {(this.state.auth) ? <Route path="/new-post" component={NewPost} /> : null}
                     <Route path="/posts/" component={Posts} />
                     <Redirect from="/" to="/posts" />
                     {/*<Route path="/" component={Posts} />*/}
